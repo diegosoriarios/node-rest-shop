@@ -131,11 +131,21 @@ function ProfilePage() {
 }
 
 class App extends Component {
+  state = {
+    location: 'Home'
+  }
+
+  handleLocation = location => {
+    this.setState({
+      location
+    })
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
-          <Header />
+          <Header location={this.state.location}/>
           <Route render={({ location }) => {
             return (
               <PageContainer>
@@ -161,19 +171,19 @@ class App extends Component {
           />
           <nav>
             <ul className="navBar">
-              <li>
+              <li onClick={() => this.handleLocation("Home")}>
                 <Link to="/"><FontAwesomeIcon icon="home" /></Link>
               </li>
-              <li>
+              <li onClick={() => this.handleLocation("Catalogo")}>
                 <Link to="/catalog/"><FontAwesomeIcon icon="search" /></Link>
               </li>
-              <li>
+              <li onClick={() => this.handleLocation("Meu carrinho")}>
                 <Link to="/cart/"><FontAwesomeIcon icon="shopping-cart" /></Link>
               </li>
-              <li>
+              <li onClick={() => this.handleLocation("Salvos")}>
                 <Link to="/like/"><FontAwesomeIcon icon="heart" /></Link>
               </li>
-              <li>
+              <li onClick={() => this.handleLocation("Perfil")}>
                 <Link to="/profile/"><FontAwesomeIcon icon="user" /></Link>
               </li>
             </ul>

@@ -27,6 +27,7 @@
     text-align: center;
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     margin: 0;
     height: 7vh;
@@ -114,4 +115,87 @@
     border-radius: 0 !important;
     margin-top: -50px;
   }
+
+  .searchIcon {
+    position: absolute;
+    width: 30px;
+  }
+
+  .notSearchingStyle {
+    width: 0; 
+    display: none;
+    -webkit-appearance: none;
+    margin-left: 10%;
+    font-family: inherit;
+    padding: 6px 0;
+    height: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0;
+    border-bottom: 2px solid black;
+    background: none;
+    border-radius: 0;
+    color: black;
+    outline: none;
+    transition: all .15s ease;
+    animation-name: hideInputMove !important;
+    animation-duration: 0.1s !important;
+    animation-timing-function: linear !important;
+    animation-direction: alternate !important;
+    -webkit-animation-name: hideInputMove !important;
+    -webkit-animation-duration: 0.1s !important;
+    -webkit-animation-timing-function: linear !important;
+    -webkit-animation-direction: alternate !important;
+  }
+
+  .searchingStyle {
+    width: 87%;
+    display: 'block';
+    -webkit-appearance: none;
+    margin-left: 10%;
+    font-family: inherit;
+    padding: 6px 0;
+    height: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0;
+    border-bottom: 2px solid black;
+    background: none;
+    border-radius: 0;
+    color: black;
+    outline: none;
+    transition: all .15s ease;
+    animation-name: inputMove !important;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    -webkit-animation-name: inputMove !important;
+    -webkit-animation-duration: 0.2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-direction: alternate;
+  }
+
+  @keyframes inputMove {
+    from   {width: 0;}
+    to {width: 87%;}
+  }
+
+  @keyframes hideInputMove {
+    from {width: 100%;}
+    to   {width: 0;}
+  }
+
+  .textStyle {
+    font-size: 0;
+  }
+  
+  .notTextStyle {
+    font-size: 1em;
+  }
+
+  @keyframes hideText {
+    from {font-size: 1em;}
+    to   {font-size: 0;}
+  }
+
 }
