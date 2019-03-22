@@ -11,7 +11,8 @@ class Cart extends Component {
                 <div className="screen">
                     <div className="vazio">
                         <div className="wrapper"></div>
-                        <p>vazio</p>
+                        <img className="emptyImage" src="https://purepng.com/public/uploads/large/purepng.com-shopping-cartshoppingcarttrolleycarriagebuggysupermarkets-1421526532320cblq3.png" alt="emptyCart" />
+                        <p>O carrinho está vazio</p>
                     </div>
                 </div>
             );

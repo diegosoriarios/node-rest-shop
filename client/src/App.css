@@ -1,5 +1,6 @@
 * {
   overflow-y: hidden;
+  border-radius: 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -106,5 +107,11 @@
     height:50%;
     border-bottom-left-radius:50%;
     border-bottom-right-radius:90%;
+  }
+
+  .emptyImage {
+    width: 25%;
+    border-radius: 0 !important;
+    margin-top: -50px;
   }
 }
