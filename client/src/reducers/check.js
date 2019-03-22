@@ -4,7 +4,7 @@ import {
     REMOVE_CART_ITEM
 } from '../actions/actionType'
 
-const initialState = {
+export const initialState = {
     items: []
 }
 

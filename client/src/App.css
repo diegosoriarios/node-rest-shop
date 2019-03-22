@@ -91,4 +91,20 @@
   .slick-dots {
     display: none;
   }
+
+  .vazio {
+    position: absolute;
+    height: 82%;
+    background-color: white;
+    width: 96%;
+  }
+
+  .wrapper {
+    background-color: rgba(0,0,0,0.1);
+    margin-left: -25%;
+    width:200%;
+    height:50%;
+    border-bottom-left-radius:50%;
+    border-bottom-right-radius:90%;
+  }
 }

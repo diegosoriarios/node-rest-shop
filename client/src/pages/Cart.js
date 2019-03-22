@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addItemToCart, removeItemFromCart } from '../actions/check'
+import { initialState } from '../reducers/check'
+import '../App.css'
 
 class Cart extends Component {
     render(){
-        if(this.props.items && this.props.items.lenght == 0){
+        if(initialState.items && initialState.items.length == 0){
             return(
                 <div className="screen">
-                    <p>Vazio</p>
+                    <div className="vazio">
+                        <div className="wrapper"></div>
+                        <p>vazio</p>
+                    </div>
                 </div>
             );
         }
