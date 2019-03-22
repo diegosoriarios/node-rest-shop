@@ -68,18 +68,14 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 10%;
     border-radius: 0;
   }
 
   .slick-slider {
     height: 100%;
-    width: 100%;
+    min-width: 100% !important;
     background-color: transparent;
-  }
-
-  .slide-arrows, .slick-track {
-    display: none;
+    padding-bottom: .5cm;
   }
 
   .slider li{
@@ -90,5 +86,9 @@
 
   .slider::-webkit-scrollbar { 
       display: none;
+  }
+
+  .slick-dots {
+    display: none;
   }
 }
