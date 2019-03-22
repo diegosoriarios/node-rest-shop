@@ -2,7 +2,7 @@ import {
     ITEM_HAS_ERRORED, 
     ADD_ITEM_TO_CART,
     REMOVE_CART_ITEM
-} from './actionType'
+} from '../actions/actionType'
 
 const initialState = {
     items: []
