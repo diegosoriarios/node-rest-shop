@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import './App.css'
 import Home from './pages/Home'
 import Catalog from './pages/Catalog'
@@ -13,17 +15,175 @@ import { faHome, faSearch, faShoppingCart, faUser, faHeart } from '@fortawesome/
 
 library.add(faHome, faSearch, faShoppingCart, faUser, faHeart)
 
+const slideInLeft = keyframes`
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+`;
+const slideOutLeft = keyframes`
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+`;
+
+const slideInRight = keyframes`
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+`;
+
+const slideOutRight = keyframes`
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+`;
+
+const PageContainer = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+`;
+
+const Page = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  h2 {
+    color: #0d47a1;
+  }
+  p {
+    font-size: 1rem;
+    max-width: 400px;
+    margin: 20px auto;
+    color: #37474f;
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    border: 1px solid #4776e6;
+    border-radius: 5px;
+    background-image: linear-gradient(
+      to right,
+      #4776e6 0%,
+      #8e54e9 51%,
+      #4776e6 100%
+    );
+  }
+
+  img {
+    border-radius: 50%;
+  }
+`;
+
+const Styled = styled(Page)`
+  &.page-enter {
+    animation: ${slideInRight} 0.2s forwards;
+  }
+  &.page-exit {
+    animation: ${slideOutRight} 0.2s forwards;
+  }
+`;
+
+function HomePage() {
+    return (
+      <Styled>
+        <Home />
+      </Styled>
+    );
+}
+
+function CatalogPage() {
+    return (
+      <Styled>
+        <Catalog />
+      </Styled>
+    );
+}
+
+function CartPage() {
+    return (
+      <Styled>
+        <Cart />
+      </Styled>
+    );
+}
+
+function WishListPage() {
+    return (
+      <Styled>
+        <WishList />
+      </Styled>
+    );
+}
+
+function ProfilePage() {
+    return (
+      <Styled>
+        <Profile />
+      </Styled>
+    );
+}
+
 class App extends Component {
     render(){
         return(
             <Router>
                 <div className="App">
                   <Header />
-                  <Route path="/" exact component={Home} />
-                  <Route path="/catalog/" component={Catalog} />
-                  <Route path="/cart/" component={Cart} />
-                  <Route path="/like/" component={WishList} />
-                  <Route path="/profile/" component={Profile} />
+                  <Route render={({location}) => {
+                      return (
+                          <PageContainer>
+                              <TransitionGroup component={null}>
+                                <CSSTransition
+                                    timeout={300}
+                                    classNames="page"
+                                    key={location.key}
+                                >
+                                    <Switch location={location}>
+                                        <Route path="/" exact component={HomePage} />
+                                        <Route path="/catalog/" component={CatalogPage} />
+                                        <Route path="/cart/" component={CartPage} />
+                                        <Route path="/like/" component={WishListPage} />
+                                        <Route path="/profile/" component={ProfilePage} />
+                                    </Switch>
+                                </CSSTransition>
+                              </TransitionGroup>
+                          </PageContainer>
+                      )
+                    }
+                  }
+                  />
                   <nav>
                     <ul className="navBar">
                         <li>
