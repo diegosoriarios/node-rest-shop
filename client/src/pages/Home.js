@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 //import axios from 'axios'
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
-//import "slick-carousel/slick/slick-theme.css"
 
 const TESTE = [
     "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1589&q=80", 
