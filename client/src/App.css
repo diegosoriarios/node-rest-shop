@@ -59,15 +59,33 @@
   }
 
   .slider {
-    width: 96%;
+    width: 92%;
     margin: 0 auto;
+    background-color: transparent;
   }
 
-  .slider div{
+  .slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 10%;
+    border-radius: 0;
+  }
+
+  .slick-slider {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  .slide-arrows, .slick-track {
+    display: none;
+  }
+
+  .slider li{
     height: 25vh;
     overflow: hidden;
     overflow-y: hidden;
-    line-height: 150px;
   }
 
   .slider::-webkit-scrollbar { 

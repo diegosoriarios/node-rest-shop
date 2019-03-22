@@ -15,31 +15,6 @@ import { faHome, faSearch, faShoppingCart, faUser, faHeart } from '@fortawesome/
 
 library.add(faHome, faSearch, faShoppingCart, faUser, faHeart)
 
-const slideInLeft = keyframes`
-  from {
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-`;
-const slideOutLeft = keyframes`
-  from {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    visibility: hidden;
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-  }
-`;
-
 const slideInRight = keyframes`
   from {
     transform: translate3d(100%, 0, 0);
@@ -116,97 +91,97 @@ const Styled = styled(Page)`
 `;
 
 function HomePage() {
-    return (
-      <Styled>
-        <Home />
-      </Styled>
-    );
+  return (
+    <Styled>
+      <Home />
+    </Styled>
+  );
 }
 
 function CatalogPage() {
-    return (
-      <Styled>
-        <Catalog />
-      </Styled>
-    );
+  return (
+    <Styled>
+      <Catalog />
+    </Styled>
+  );
 }
 
 function CartPage() {
-    return (
-      <Styled>
-        <Cart />
-      </Styled>
-    );
+  return (
+    <Styled>
+      <Cart />
+    </Styled>
+  );
 }
 
 function WishListPage() {
-    return (
-      <Styled>
-        <WishList />
-      </Styled>
-    );
+  return (
+    <Styled>
+      <WishList />
+    </Styled>
+  );
 }
 
 function ProfilePage() {
-    return (
-      <Styled>
-        <Profile />
-      </Styled>
-    );
+  return (
+    <Styled>
+      <Profile />
+    </Styled>
+  );
 }
 
 class App extends Component {
-    render(){
-        return(
-            <Router>
-                <div className="App">
-                  <Header />
-                  <Route render={({location}) => {
-                      return (
-                          <PageContainer>
-                              <TransitionGroup component={null}>
-                                <CSSTransition
-                                    timeout={300}
-                                    classNames="page"
-                                    key={location.key}
-                                >
-                                    <Switch location={location}>
-                                        <Route path="/" exact component={HomePage} />
-                                        <Route path="/catalog/" component={CatalogPage} />
-                                        <Route path="/cart/" component={CartPage} />
-                                        <Route path="/like/" component={WishListPage} />
-                                        <Route path="/profile/" component={ProfilePage} />
-                                    </Switch>
-                                </CSSTransition>
-                              </TransitionGroup>
-                          </PageContainer>
-                      )
-                    }
-                  }
-                  />
-                  <nav>
-                    <ul className="navBar">
-                        <li>
-                            <Link to="/"><FontAwesomeIcon icon="home" /></Link>
-                        </li>
-                        <li>
-                            <Link to="/catalog/"><FontAwesomeIcon icon="search" /></Link>
-                        </li>
-                        <li>
-                            <Link to="/cart/"><FontAwesomeIcon icon="shopping-cart" /></Link>
-                        </li>
-                        <li>
-                            <Link to="/like/"><FontAwesomeIcon icon="heart" /></Link>
-                        </li>
-                        <li>
-                            <Link to="/profile/"><FontAwesomeIcon icon="user" /></Link>
-                        </li>
-                    </ul>
-                  </nav>
-                </div>
-            </Router>
-        )
-    }
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Header />
+          <Route render={({ location }) => {
+            return (
+              <PageContainer>
+                <TransitionGroup component={null}>
+                  <CSSTransition
+                    timeout={300}
+                    classNames="page"
+                    key={location.key}
+                  >
+                    <Switch location={location}>
+                      <Route path="/" exact component={HomePage} />
+                      <Route path="/catalog/" component={CatalogPage} />
+                      <Route path="/cart/" component={CartPage} />
+                      <Route path="/like/" component={WishListPage} />
+                      <Route path="/profile/" component={ProfilePage} />
+                    </Switch>
+                  </CSSTransition>
+                </TransitionGroup>
+              </PageContainer>
+            )
+          }
+          }
+          />
+          <nav>
+            <ul className="navBar">
+              <li>
+                <Link to="/"><FontAwesomeIcon icon="home" /></Link>
+              </li>
+              <li>
+                <Link to="/catalog/"><FontAwesomeIcon icon="search" /></Link>
+              </li>
+              <li>
+                <Link to="/cart/"><FontAwesomeIcon icon="shopping-cart" /></Link>
+              </li>
+              <li>
+                <Link to="/like/"><FontAwesomeIcon icon="heart" /></Link>
+              </li>
+              <li>
+                <Link to="/profile/"><FontAwesomeIcon icon="user" /></Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </Router>
+    )
+  }
 }
 
 export default App
